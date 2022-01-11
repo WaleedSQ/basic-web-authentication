@@ -1,0 +1,129 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Onboarding
+  contact: {}
+host: localhost:8080
+basePath: /api
+securityDefinitions:
+  JWT:  
+    type: apiKey  
+    in: header  
+    name: access_token
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /login:
+    post:
+      summary: http://localhost:8080/api/login?usernameOrEmail=wal&password=wal123
+      tags:
+        - Misc
+      operationId: http://localhost:8080/api/login?usernameOrEmail=wal&password=wal123
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: usernameOrEmail
+          in: query
+          required: true
+          type: string
+          description: 'Username or Email'
+        - name: password
+          in: query
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/http%3A~1~1localhost%3A8080~1api~1login%3FusernameOrEmail%3Dwal%26password%3Dwal123request'
+      responses:
+        '200':
+          description: 'Login successful'
+          headers: {}
+        '400':
+          description: 'Authentication failure'
+          headers: {}
+      security:
+        - JWT: []
+  /signup:
+    post:
+      summary: http://localhost:8080/api/signup?username=wal&email=wal@test.com&password=wal123
+      tags:
+        - Misc
+      operationId: http://localhost:8080/api/signup?username=wal&email=wal@test.com&password=wal123
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: username
+          in: query
+          required: true
+          type: string
+          description: ''
+        - name: email
+          in: query
+          required: true
+          type: string
+          description: ''
+        - name: password
+          in: query
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/http%3A~1~1localhost%3A8080~1api~1signup%3Fusername%3Dwal%26email%3Dwal%40test.com%26password%3Dwal123request'
+      responses:
+        '200':
+          description: 'User successfuly creater'
+          headers: {}
+        '400':
+          description: 'User already exist'
+          headers: {}
+definitions:
+  http://localhost:8080/api/login?usernameOrEmail=wal&password=wal123request:
+    title: http://localhost:8080/api/login?usernameOrEmail=wal&password=wal123request
+    example:
+      usernameOrEmail: wal@mail.com
+      password: wal123
+    type: object
+    properties:
+      usernameOrEmail:
+        type: string
+      password:
+        type: string
+    required:
+      - usernameOrEmail
+      - password
+  http://localhost:8080/api/signup?username=wal&email=wal@test.com&password=wal123request:
+    title: http://localhost:8080/api/signup?username=wal&email=wal@test.com&password=wal123request
+    example:
+      username: wal
+      email: wal@mail.com
+      password: wal123
+    type: object
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - username
+      - email
+      - password
+tags:
+  - name: Misc
+    description: ''
+

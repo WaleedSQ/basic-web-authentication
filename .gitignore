@@ -11,6 +11,7 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 gradle/wrapper/gradle-wrapper.jar
 
+.idea/
 # Eclipse m2e generated files
 # Eclipse Core
 .project
