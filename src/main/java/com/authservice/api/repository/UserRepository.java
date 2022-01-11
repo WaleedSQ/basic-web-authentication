@@ -1,6 +1,6 @@
-package com.authentication.api.repository;
+package com.authservice.api.repository;
 
-import com.authentication.api.model.User;
+import com.authservice.api.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

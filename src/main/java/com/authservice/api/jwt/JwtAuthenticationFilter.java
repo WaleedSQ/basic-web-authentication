@@ -1,6 +1,6 @@
-package com.authentication.api.jwt;
+package com.authservice.api.jwt;
 
-import com.authentication.api.service.CustomUserDetailsService;
+import com.authservice.api.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

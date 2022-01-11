@@ -1,8 +1,8 @@
-package com.authentication.api;
+package com.authservice.api;
 
-import com.authentication.AuthApplication;
-import com.authentication.api.dto.SignUpDto;
-import com.authentication.api.dto.LoginDto;
+import com.authservice.AuthApplication;
+import com.authservice.api.dto.SignUpDto;
+import com.authservice.api.dto.LoginDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

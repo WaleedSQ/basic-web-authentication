@@ -1,7 +1,7 @@
-package com.authentication.api.service;
+package com.authservice.api.service;
 
-import com.authentication.api.model.User;
-import com.authentication.api.repository.UserRepository;
+import com.authservice.api.model.User;
+import com.authservice.api.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

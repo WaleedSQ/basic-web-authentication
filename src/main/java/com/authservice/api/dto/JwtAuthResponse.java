@@ -1,4 +1,4 @@
-package com.authentication.api.dto;
+package com.authservice.api.dto;
 
 public class JwtAuthResponse {
     private String accessToken;

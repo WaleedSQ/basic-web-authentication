@@ -1,8 +1,8 @@
-package com.authentication.api.config;
+package com.authservice.api.config;
 
-import com.authentication.api.service.CustomUserDetailsService;
-import com.authentication.api.jwt.JwtAuthenticationEntryPoint;
-import com.authentication.api.jwt.JwtAuthenticationFilter;
+import com.authservice.api.service.CustomUserDetailsService;
+import com.authservice.api.jwt.JwtAuthenticationEntryPoint;
+import com.authservice.api.jwt.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

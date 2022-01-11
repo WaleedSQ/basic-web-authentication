@@ -1,4 +1,4 @@
-package com.authentication.api.model;
+package com.authservice.api.model;
 
 import lombok.Getter;
 import lombok.Setter;
