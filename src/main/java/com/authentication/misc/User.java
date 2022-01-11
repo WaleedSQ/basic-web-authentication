@@ -1,6 +1,5 @@
 package com.authentication.misc;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

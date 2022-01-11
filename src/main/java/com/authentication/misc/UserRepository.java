@@ -1,6 +1,5 @@
 package com.authentication.misc;
 
-import com.authentication.misc.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

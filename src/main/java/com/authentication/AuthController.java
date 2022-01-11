@@ -69,16 +69,6 @@ public class AuthController {
 
         userRepository.save(user);
 
-//        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-//                signUpDto.getUsername(), passwordEncoder.encode(signUpDto.getPassword())));
-
-        //SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        // get token form tokenProvider
-//        String token = tokenProvider.generateToken(authentication);
-
-//        return ResponseEntity.ok(new JwtAuthResponse(token));
-
         return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
 
     }
