@@ -1,4 +1,4 @@
-package com.authentication.jwt;
+package com.authentication.api.jwt;
 
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;

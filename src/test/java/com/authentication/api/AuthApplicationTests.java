@@ -1,4 +1,4 @@
-package com.authentication;
+package com.authentication.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

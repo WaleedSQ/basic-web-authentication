@@ -1,4 +1,4 @@
-package com.authentication.misc;
+package com.authentication.api.dto;
 
 import lombok.Data;
 

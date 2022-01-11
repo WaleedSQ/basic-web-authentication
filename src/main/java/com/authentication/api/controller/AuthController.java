@@ -1,11 +1,11 @@
-package com.authentication;
+package com.authentication.api.controller;
 
-import com.authentication.jwt.JwtAuthResponse;
-import com.authentication.jwt.JwtTokenProvider;
-import com.authentication.misc.LoginDto;
-import com.authentication.misc.SignUpDto;
-import com.authentication.misc.User;
-import com.authentication.misc.UserRepository;
+import com.authentication.api.dto.LoginDto;
+import com.authentication.api.dto.SignUpDto;
+import com.authentication.api.jwt.JwtTokenProvider;
+import com.authentication.api.model.User;
+import com.authentication.api.dto.JwtAuthResponse;
+import com.authentication.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
