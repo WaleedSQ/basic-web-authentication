@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @AutoConfigureMockMvc
 public abstract class AuthApplicationTests {
 
-    protected static String mapToJson(Object obj) throws JsonProcessingException {
+    public static String mapToJson(Object obj) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(obj);
     }

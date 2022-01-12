@@ -1,5 +1,6 @@
-package com.authservice.api;
+package com.authservice.api.controller;
 
+import com.authservice.api.AuthApplicationTests;
 import com.authservice.api.dto.LoginDto;
 import com.authservice.api.dto.SignUpDto;
 import org.junit.jupiter.api.Test;
