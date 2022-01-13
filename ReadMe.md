@@ -4,6 +4,17 @@
 
 - Java 1.8
 - Maven 3+
+- Local SonarQube instance
+
+### Local Envrionment setup
+
+#### SonarQube
+- Download and unzip the `sonarqube` v7.7 [from this link](https://www.sonarqube.org/downloads/)
+- Unzip and `cd` to the sonarqube app directory.
+- Run `./bin/<YOUR_OS>/sonar.sh start`
+
+#### GIT repo
+- [basic-web-authentication](https://github.com/WaleedSQ/basic-web-authentication.git)
 
 ### Running The App
 
@@ -12,6 +23,8 @@
 **Package into a `jar`:** `mvn clean package`
 
 **Running the app:** `mvn spring-boot:run`
+
+**Running SonarQube scan:** `mvn sonar:sonar`
 
 
 ### Other References
