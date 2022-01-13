@@ -208,10 +208,6 @@ public class UserAuthTest {
         loginDto.setUsernameOrEmail("test");
         loginDto.setPassword("test123");
 
-        //inputJson = AuthApplicationTests.mapToJson(loginDto);
-        //mvc.perform(MockMvcRequestBuilders.post(uri)
-        //        .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
-
         String token = "invalidTokenString";
 
         mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -244,6 +240,64 @@ public class UserAuthTest {
 
         mvc.perform(MockMvcRequestBuilders.post(uri)
                         .header("Authorization", "Bearer " + token + "x"))
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void invalidBearerAuthentication() throws Exception {
+        String uri = "/api/signup";
+        SignUpDto signUpDto = new SignUpDto();
+        signUpDto.setUsername("test");
+        signUpDto.setEmail("test@mail.com");
+        signUpDto.setPassword("test123");
+
+        String inputJson = AuthApplicationTests.mapToJson(signUpDto);
+        mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        uri = "/api/login";
+        LoginDto loginDto = new LoginDto();
+        loginDto.setUsernameOrEmail("test");
+        loginDto.setPassword("test123");
+
+        inputJson = AuthApplicationTests.mapToJson(loginDto);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        String response = mvcResult.getResponse().getContentAsString();
+        String token = response.replaceFirst(".*Token\":\"(.*?)\",\"token.*", "$1");
+
+        mvc.perform(MockMvcRequestBuilders.post(uri)
+                        .header("Authorization", token))
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void noBearerAuthentication() throws Exception {
+        String uri = "/api/signup";
+        SignUpDto signUpDto = new SignUpDto();
+        signUpDto.setUsername("test");
+        signUpDto.setEmail("test@mail.com");
+        signUpDto.setPassword("test123");
+
+        String inputJson = AuthApplicationTests.mapToJson(signUpDto);
+        mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        uri = "/api/login";
+        LoginDto loginDto = new LoginDto();
+        loginDto.setUsernameOrEmail("test");
+        loginDto.setPassword("test123");
+
+        inputJson = AuthApplicationTests.mapToJson(loginDto);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+
+        String response = mvcResult.getResponse().getContentAsString();
+        String token = response.replaceFirst(".*Token\":\"(.*?)\",\"token.*", "$1");
+
+        mvc.perform(MockMvcRequestBuilders.post(uri)
+                        .header("Authorization", ""))
                 .andExpect(status().is4xxClientError());
     }
 }
