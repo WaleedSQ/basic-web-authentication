@@ -43,7 +43,7 @@ public class UserAuthTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        assertEquals(content, "User registered successfully");
+        assertEquals("User registered successfully", content);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class UserAuthTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(400, status);
         String content = mvcResult.getResponse().getContentAsString();
-        assertEquals(content, "Username is already taken!");
+        assertEquals("Username is already taken!", content);
     }
 
     @Test
@@ -97,7 +97,7 @@ public class UserAuthTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(400, status);
         String content = mvcResult.getResponse().getContentAsString();
-        assertEquals(content, "Email is already taken!");
+        assertEquals("Email is already taken!", content);
     }
 
     @Test
