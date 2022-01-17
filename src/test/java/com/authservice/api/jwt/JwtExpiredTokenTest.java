@@ -1,8 +1,5 @@
-package com.authservice.api.controller;
+package com.authservice.api.jwt;
 
-import com.authservice.api.AuthApplicationTests;
-import com.authservice.api.dto.LoginDto;
-import com.authservice.api.dto.SignUpDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,36 +15,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestPropertySource({ "/application-test.properties" })
-public class UserAuthTestExpiredToken {
+public class JwtExpiredTokenTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
     public void ExpiredTokenAuthentication() throws Exception {
-        String uri = "/api/signup";
-        SignUpDto signUpDto = new SignUpDto();
-        signUpDto.setUsername("test");
-        signUpDto.setEmail("test@mail.com");
-        signUpDto.setPassword("test123");
+        mvc.perform(MockMvcRequestBuilders.post("/api/signup")
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content("{\"username\":\"user\",\"email\":\"user@mail.com\",\"password\":\"test123\"}"))
+                .andReturn();
 
-        String inputJson = AuthApplicationTests.mapToJson(signUpDto);
-        mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
-
-        uri = "/api/login";
-        LoginDto loginDto = new LoginDto();
-        loginDto.setUsernameOrEmail("test");
-        loginDto.setPassword("test123");
-
-        inputJson = AuthApplicationTests.mapToJson(loginDto);
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post("/api/login")
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content("{\"usernameOrEmail\":\"user\",\"password\":\"test123\"}")).andReturn();
 
         String response = mvcResult.getResponse().getContentAsString();
         String token = response.replaceFirst(".*Token\":\"(.*?)\",\"token.*", "$1");
 
-        mvc.perform(MockMvcRequestBuilders.post(uri)
+        mvc.perform(MockMvcRequestBuilders.post("/api/login")
                         .header("Authorization", "Bearer " + token))
                 .andExpect(status().is4xxClientError());
     }

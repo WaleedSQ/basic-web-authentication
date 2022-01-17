@@ -46,9 +46,7 @@ public class UserDetailsServiceTest {
 
         Mockito.doThrow(new UsernameNotFoundException(user.getUsername())).when(userRepository).findByUsernameOrEmail(user.getUsername(), user.getEmail());
 
-        assertThrows(UsernameNotFoundException.class, () -> {
-            customUserDetailsService.loadUserByUsername( user.getUsername());
-        }, "User not found with username or email:" + user.getUsername());
+        assertThrows(UsernameNotFoundException.class, () -> customUserDetailsService.loadUserByUsername( user.getUsername()), "User not found with username or email:" + user.getUsername());
     }
 
 }

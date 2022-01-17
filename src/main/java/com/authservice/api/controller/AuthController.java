@@ -49,7 +49,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Integer> registerUser(@RequestBody SignUpDto signUpDto){
+    public ResponseEntity registerUser(@RequestBody SignUpDto signUpDto){
 
         // add check for username exists in a DB
         if(userRepository.existsByUsername(signUpDto.getUsername())){
